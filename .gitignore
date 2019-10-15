@@ -1,0 +1,18 @@
+/.idea/
+./metadata/
+./target/
+
+# Intellij
+.idea/
+*.iml
+*.iws
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
+build/
+/.idea/*
+*.pyc
+.session/
