@@ -41,9 +41,6 @@ class Daemon:
         os.dup2(so.fileno(), sys.stdout.fileno())
         os.dup2(se.fileno(), sys.stderr.fileno())
 
-    # 注意是在daemonize方法外写
-    def delpid(self):  # 删除pid
-        os.remove(self.pidfile)
         # 注册删除pid函数
         atexit.register(self.delpid)
         # 根据文件pid判断是否存在进程
@@ -51,6 +48,11 @@ class Daemon:
         # 写入pidfile
         with open(self.pidfile, 'w+') as f:
             f.write(pid + '\n')
+
+    # 注意是在daemonize方法外写
+    def delpid(self):  # 删除pid
+        os.remove(self.pidfile)
+
 
     def start(self):
         '''
